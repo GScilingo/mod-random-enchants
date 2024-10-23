@@ -58,18 +58,209 @@ RandomEnchants.OnGroupRoll = 1
 #        Probability (in percentage) for the first enchant to be applied.
 #        Default:     70.0
 
-RandomEnchants.EnchantChance1=70.0
+
+################
+## DEPRECATED ##
+################
+# RandomEnchants.EnchantChance1=100.0
 
 #
 #     RandomEnchants.EnchantChance2
 #        Probability (in percentage) for the second enchant to be applied (only if the first enchant is applied).
 #        Default:     65.0
 
-RandomEnchants.EnchantChance2=65.0
+#RandomEnchants.EnchantChance2=65.0
 
 #
 #     RandomEnchants.EnchantChance3
 #        Probability (in percentage) for the third enchant to be applied (only if the second enchant is applied).
 #        Default:     60.0
 
-RandomEnchants.EnchantChance3=60.0
+# RandomEnchants.EnchantChance3=60.0
+
+#
+#     RandomEnchants.IsTierAcumulative
+#       Determines if the enchant tier should be accumulative, this means that if the tier enchantment roll for the
+#	 	item was 2 then it should get a tier <= 2 enchant, otherwise it'll be extrictly equal to 2.
+#        Default:     false
+
+RandomEnchants.TierAcumulative=false
+
+#
+#     RandomEnchants.TierNMinItemLevel
+#       Determines the minimum item level that the item has to have in order to have (N) tier random enchantments,
+#		zero means it doens't have a minimum item level.
+#        Default:     0, 30, 40, 60, 100
+#		for tier 1, 2, 3, 4 and 5 respectivly.
+
+RandomEnchants.TierOneMinItemLevel = 0
+RandomEnchants.TierTwoMinItemLevel = 30
+RandomEnchants.TierThreeMinItemLevel = 40
+RandomEnchants.TierFourMinItemLevel = 60
+RandomEnchants.TierFiveMinItemLevel = 100
+
+#     RandomEnchants.DiscardOutOfRangeTier
+#       Discards the enchantment if the tier roll was higher than the maximum determined by TierNMinItemLevel
+#		e.g: An item with iLvl 22 get's a tier 4 roll while it's maximum tier is 1 then the enchant will be
+#		discarded. If false then the enchantment tier will be setted to the maximum specified by TierNMinItemLevel
+#		
+#        Default:     false
+
+RandomEnchants.DiscardOutOfRangeTier = false
+
+#
+#     RandomEnchants.ExcludedItems
+#       Comma separated items id's that won't get random enchants
+#		
+#        Default:     ""
+
+RandomEnchants.ExcludedItems=""
+
+#
+#     RandomEnchants.ExcludedQualities
+#       Comma separated item qualities id(s) that won't get random enchants
+#		Quality IDs:
+#				GREY: 0
+#				WHITE: 1
+#				GREEN: 2
+#				BLUE: 3
+#				PURPLE: 4
+#				ORANGE: 5
+#        Default:     ""
+
+RandomEnchants.ExcludedQualities=""
+
+#
+#     RandomEnchants.DisableInArena
+#		Disables random enchantments if player is in a PVP Arena
+#        Default:     true
+
+RandomEnchants.DisableInArena=true
+
+#
+#     RandomEnchants.DisableInBattleGrounds
+#		Disables random enchantments if player is in BattleGrounds
+#        Default:     true
+
+RandomEnchants.DisableInBattleGrounds=true
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#     
+#		
+#        CUSTOM CONFIG
+#
+#     	If you're interested in tweaking any enchantment tier chance you should modify
+#		the values in this section.
+#		
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+#
+#     RandomEnchants.(Quality)ItemMaxEnchantmentTier
+#		Sets the maximum enchantment tier that an item from a certain quality can have,
+#		this option asumes that the item mets the TierNMinItemLevel.
+#
+#        Defaults:     For GREY, WHITE, GREEN, BLUE, PURPLE and ORANGE respectivly: 
+#		 					 1,	2, 3, 4, 5
+#
+#		Note: if IsTierAcumulative=false then this sets a fixed enchatment tier for an item eg:
+#		RandomEnchants.BlueItemMaxEnchantmentTier=3 will result in all blue items having a tier 3 enchant
+
+RandomEnchants.GreyItemMaxRandomEnchantmentTier=1
+RandomEnchants.WhiteItemMaxRandomEnchantmentTier=1
+RandomEnchants.GreenItemMaxRandomEnchantmentTier=2
+RandomEnchants.BlueItemMaxRandomEnchantmentTier=3
+RandomEnchants.PurpleItemMaxRandomEnchantmentTier=4
+RandomEnchants.OrangeItemMaxRandomEnchantmentTier=5
+
+#     RandomEnchants.(Quality)ItemMaxRandomEnchantNumber
+#		This option sets the maximum amount of random enchants between 0 and 3 that an 
+#		item of a (Quality) quality can get.
+
+RandomEnchants.GreyItemMaxRandomEnchantNumber=1
+RandomEnchants.WhiteItemMaxRandomEnchantNumber=1
+RandomEnchants.GreenItemMaxRandomEnchantNumber=1
+RandomEnchants.BlueItemMaxRandomEnchantNumber=2
+RandomEnchants.PurpleItemMaxRandomEnchantNumber=3
+RandomEnchants.OrangeItemMaxRandomEnchantNumber=3
+
+#     RandomEnchants.(Quality)ItemRandomEnchantChance(N)
+#		This option sets the chance of getting the (N)th random enchant
+#		on the item.
+#
+#		eg: 
+#			RandomEnchants.WhiteItemRandomEnchantChance1=30
+#			RandomEnchants.WhiteItemRandomEnchantChance2=20
+#		
+#		means that a white item has a 30% chance of getting the first random enchant
+#		and 20% of getting the second.
+#		if WhiteItemMaxRandomEnchantNumber=1 then WhiteItemRandomEnchantChance(n > 1) = x 
+#		will have no effect
+
+RandomEnchants.GreyItemRandomEnchantChance1=5.0
+RandomEnchants.GreyItemRandomEnchantChance2=0.0
+RandomEnchants.GreyItemRandomEnchantChance3=0.0
+
+RandomEnchants.WhiteItemRandomEnchantChance1=10.0
+RandomEnchants.WhiteItemRandomEnchantChance2=0.0
+RandomEnchants.WhiteItemRandomEnchantChance3=0.0
+
+RandomEnchants.GreenItemRandomEnchantChance1=10.0
+RandomEnchants.GreenItemRandomEnchantChance2=0.0
+RandomEnchants.GreenItemRandomEnchantChance3=0.0
+
+RandomEnchants.BlueItemRandomEnchantChance1=10.0
+RandomEnchants.BlueItemRandomEnchantChance2=5.0
+RandomEnchants.BlueItemRandomEnchantChance3=0.0
+
+RandomEnchants.PurpleItemRandomEnchantChance1=7.0
+RandomEnchants.PurpleItemRandomEnchantChance2=5.0
+RandomEnchants.PurpleItemRandomEnchantChance3=3.0
+
+RandomEnchants.OrangeItemRandomEnchantChance1=3.0
+RandomEnchants.OrangeItemRandomEnchantChance2=2.0
+RandomEnchants.OrangeItemRandomEnchantChance3=1.0
+
+
+#     RandomEnchants.(Quality)ItemTier(N)RandomEnchantChance
+#		Sets the probability that an item of (Quality) quality will recieve a tier (N)
+#		enchant after beign elected for a random enchant
+#
+#		Note: the sum should be 100.
+
+
+RandomEnchants.GreyItemTier1RandomEnchantChance=100.0
+RandomEnchants.GreyItemTier2RandomEnchantChance=0.0
+RandomEnchants.GreyItemTier3RandomEnchantChance=0.0
+RandomEnchants.GreyItemTier4RandomEnchantChance=0.0
+RandomEnchants.GreyItemTier5RandomEnchantChance=0.0
+
+RandomEnchants.WhiteItemTier1RandomEnchantChance=100.0
+RandomEnchants.WhiteItemTier2RandomEnchantChance=0.0
+RandomEnchants.WhiteItemTier3RandomEnchantChance=0.0
+RandomEnchants.WhiteItemTier4RandomEnchantChance=0.0
+RandomEnchants.WhiteItemTier5RandomEnchantChance=0.0
+
+RandomEnchants.GreenItemTier1RandomEnchantChance=90.0
+RandomEnchants.GreenItemTier2RandomEnchantChance=10.0
+RandomEnchants.GreenItemTier3RandomEnchantChance=0.0
+RandomEnchants.GreenItemTier4RandomEnchantChance=0.0
+RandomEnchants.GreenItemTier5RandomEnchantChance=0.0
+
+RandomEnchants.BlueItemTier1RandomEnchantChance=70.0
+RandomEnchants.BlueItemTier2RandomEnchantChance=20.0
+RandomEnchants.BlueItemTier3RandomEnchantChance=10.0
+RandomEnchants.BlueItemTier4RandomEnchantChance=0.0
+RandomEnchants.BlueItemTier5RandomEnchantChance=0.0
+
+RandomEnchants.PurpleItemTier1RandomEnchantChance=50.0
+RandomEnchants.PurpleItemTier2RandomEnchantChance=30.0
+RandomEnchants.PurpleItemTier3RandomEnchantChance=15.0
+RandomEnchants.PurpleItemTier4RandomEnchantChance=5.0
+RandomEnchants.PurpleItemTier5RandomEnchantChance=0.0
+
+RandomEnchants.OrangeItemTier1RandomEnchantChance=50.0
+RandomEnchants.OrangeItemTier2RandomEnchantChance=30.0
+RandomEnchants.OrangeItemTier3RandomEnchantChance=10.0
+RandomEnchants.OrangeItemTier4RandomEnchantChance=7.0
+RandomEnchants.OrangeItemTier5RandomEnchantChance=3.0

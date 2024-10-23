@@ -19,6 +19,9 @@ enum ItemQuality
 
 void rollPossibleEnchant(Player* player, Item* item);
 [[nodiscard]] uint32 getRandEnchantment(Item* item);
+uint32 GetMaxEnchantmentTier(uint32 itemLevel);
+bool IsExcludedItem(uint32 itemId);
+bool IsExcludedQuality(uint32 itemQuality);
 
 class RandomEnchantsPlayer : public PlayerScript
 {
@@ -32,7 +35,16 @@ public:
     void OnGroupRollRewardItem(Player* player, Item* item, uint32 /*count*/, RollVote /*voteType*/, Roll* /*roll*/) override;
 };
 
+class RandomEnchantsConfig : public WorldScript
+{
+    public:
+        RandomEnchantsConfig() : WorldScript("RandomEnchantConfig") { }
+
+        void OnBeforeConfigLoad(bool /*reload*/) override;
+};
+
 void AddRandomEnchantsScripts()
 {
+    new RandomEnchantsConfig();
     new RandomEnchantsPlayer();
 }
