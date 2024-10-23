@@ -264,3 +264,30 @@ RandomEnchants.OrangeItemTier2RandomEnchantChance=30.0
 RandomEnchants.OrangeItemTier3RandomEnchantChance=10.0
 RandomEnchants.OrangeItemTier4RandomEnchantChance=7.0
 RandomEnchants.OrangeItemTier5RandomEnchantChance=3.0
+
+
+# # # # # # # # # #
+# SYSTEM MESSAGES #
+# # # # # # # # # #
+#
+#     RandomEnchants.RandomEnchantMessageEnabled
+#		Enables the system message recieved by the user when an item gets a Random Enchant
+#
+#		Default: true
+
+RandomEnchants.RandomEnchantMessageEnabled=true
+
+#
+#     RandomEnchants.RandomEnchantMessage(N)
+#		Sets the text to be desplayed to the user then an valid item gets N Random Enchantment(s)
+#
+#			{} is a placeholder for the item name 
+#			|cffFF0000 |r it's the color code for red
+#
+#		This option should be surrounded by quotes, as it's probably going to contain spaces
+#
+#		Default: "El objeto obtenido|cffFF0000 {} |rrecibio un encantamiento aleatorio!"
+
+RandomEnchants.RandomEnchantMessage1="El objeto obtenido|cffFF0000 {} |rrecibio un encantamiento aleatorio!"
+RandomEnchants.RandomEnchantMessage2="El objeto obtenido|cffFF0000 {} |rrecibio 2 encantamientos aleatorios!"
+RandomEnchants.RandomEnchantMessage3="El objeto obtenido|cffFF0000 {} |rrecibio 3 encantamientos aleatorio!"

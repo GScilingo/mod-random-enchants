@@ -94,6 +94,9 @@ void rollPossibleEnchant(Player* player, Item* item)
         }
     }
 
+    if (!sConfigMgr->GetOption<bool>("RandomEnchants.RandomEnchantMessageEnabled", true))
+        return;
+
     ChatHandler chathandle = ChatHandler(player->GetSession());
     uint8 loc_idx = player->GetSession()->GetSessionDbLocaleIndex();
     const ItemTemplate* temp = item->GetTemplate();
@@ -101,13 +104,24 @@ void rollPossibleEnchant(Player* player, Item* item)
     if (ItemLocale const* il = sObjectMgr->GetItemLocale(temp->ItemId))
         ObjectMgr::GetLocaleString(il->Name, loc_idx, name);
 
-
     if (slotRand[2] != -1)
-        chathandle.PSendSysMessage("El objeto obtenido |cffFF0000 {} |rrecibio|cffFF0000 3 |rencantamientos aleatorios!", name);
+        chathandle.PSendSysMessage(
+            sConfigMgr->GetOption<std::string>(
+                    "RandomEnchants.RandomEnchantMessage3",
+                    "El objeto obtenido|cffFF0000 {} |rrecibio 3 encantamientos aleatorios!"),
+            name);
     else if (slotRand[1] != -1)
-        chathandle.PSendSysMessage("El objeto obtenido |cffFF0000 {} |rrecibio|cffFF0000 2 |rencantamientos aleatorios!", name);
+        chathandle.PSendSysMessage(
+            sConfigMgr->GetOption<std::string>(
+                    "RandomEnchants.RandomEnchantMessage2",
+                    "El objeto obtenido|cffFF0000 {} |rrecibio 2 encantamientos aleatorios!"),
+            name);
     else if (slotRand[0] != -1)
-        chathandle.PSendSysMessage("El obtejo obtenido |cffFF0000 {} |rrecibio|cffFF0000 1 |rencantamiento aleatorio!", name);
+        chathandle.PSendSysMessage(
+            sConfigMgr->GetOption<std::string>(
+                    "RandomEnchants.RandomEnchantMessage1",
+                    "El objeto obtenido|cffFF0000 {} |rrecibio 1 encantamiento aleatorio!"),
+            name);
 }
 
 uint32 getRandEnchantment(Item* item)
