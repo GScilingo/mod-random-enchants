@@ -19,6 +19,7 @@ This is a fork of the Random Enchants Module for Azerothcore which adds more con
 - Maximum number of random enchants per item quality
 - Random enchantment chance for any of the 3 slots configurable per item quality (Altough they keep being accumulative so if you dont get the first you can't get the second and so on...)
 - Random enchantment tier chance per item quality
+- Enable/disable random enchant messages and customize them
 
 ## Default configuration
 
@@ -32,6 +33,11 @@ This is a default configuration that the module comes with:
 | <span style="color:blue">Blue</span> | 3 | 2 | 10% | 5% | - | 70% | 20% | 10% | 0% | 0% |
 | <span style="color:purple">Purple</span> | 4 | 3 | 7% | 5% | 3% | 50% | 30% | 15% | 5% | 0% |
 | <span style="color:orange">Orange</span> | 5 | 3 | 3% | 2% | 1% | 50% | 30% | 10% | 7% | 3% |
+
+_This numbers asumes that the item meets the minimum item level requirement for every tier, if they don't then (depending on the config) they will recieve the maximum tier they can if rolled_
+
+- **Enchant Chance (N)** is the chance that the item will get an enchantment in that (N) slot. They're accumulative (for now at least) so if you don't get the first enchant then you can't get the next ones.
+- **Tier (N) Chance** is the chance of, once getting the _Enchant Chance (N) roll_, getting an enchantment of (N) tier in that slot.
 
 ## Adding enchantments
 
@@ -52,7 +58,7 @@ Adding an enchantment is a simply as adding a new entry to the table:
 This fork it's still WIP and i have some other changes to make, if you encounter any problem don't hesitate opening an issue.
 
 - [ ] Allow adding more tiers so you can categorize your enchantment in as many tiers as you like
-- [ ] Move the in-game item enchant message to config (Right now is in spanish and it have a typo, mb)
+- [x] Move the in-game item enchant message to config (Right now is in spanish and it have a typo, mb)
 - [ ] Add option for random enchantment rolls to not be accumulative
 
 ## Credits
