@@ -44,8 +44,12 @@ _This numbers asumes that the item meets the minimum item level requirement for 
 Not all the possible enchantments are added in the module but you can add them if you like (or remove some of them if you don't). 
 The module creates a table in `acore_world` named `item_enchantment_random_tier` where you will find a table with this four columns
 
+<div align="center">
+  
 | **Enchant ID** | **Tier** | **Class** | **exclusiveSubClass** |
 |:---:|:---:|:---:|:---:|
+
+</div>
 
 Adding an enchantment is as simple as adding a new entry to the table where:
 - **Enchant ID** is the ID of the enchant to be added, it can be obtained from [this site](https://wowwiki-archive.fandom.com/wiki/EnchantId/Enchant_IDs) or by extracting the SpellItemEnchantments.dbc file. I've extracted the file and uploaded it to this [spreadsheet](https://docs.google.com/spreadsheets/d/18Rwvshr7yiFzUwzVudMOrgBaoGdyQdK8L3u_xEVmqLE/edit?usp=sharing) in case you're interested.
