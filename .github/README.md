@@ -21,9 +21,9 @@ This is a fork of the Random Enchants Module for Azerothcore which adds more con
 - Random enchantment tier chance per item quality
 - Enable/disable random enchant messages and customize them (Defaults are in spanish so you probably want to change them)
 
-## Default configuration
+## Default chance configuration
 
-This is a default configuration that the module comes with:
+This is a default chance configuration, every number is modifiable through the `.conf` file so you can create your own experience.
 
 | **Item<br>Quality** | **Max<br>Enchant Tier** | **Max N° of<br>Random Enchants** | **Enchant<br>Chance (1)** | **Enchant <br>Chance (2)** | **Enchant<br>Chance (3)** | **Tier 1<br>Chance** | **Tier 2<br>Chance** | **Tier 3<br>Chance** | **Tier 4<br>Chance** | **Tier 5<br>Chance** |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
@@ -42,16 +42,23 @@ _This numbers asumes that the item meets the minimum item level requirement for 
 ## Adding possible random enchantments
 
 Not all the possible enchantments are added in the module but you can add them if you like (or remove some of them if you don't). 
-The module creates a table in `acore_world` named `item_enchantment_random_tier` where you will find entries like this
+The module creates a table in `acore_world` named `item_enchantment_random_tier` where you will find a table with this four columns
 
 | **Enchant ID** | **Tier** | **Class** | **exclusiveSubClass** |
 |:---:|:---:|:---:|:---:|
 
 Adding an enchantment is as simple as adding a new entry to the table where:
-- **Enchant ID** is the ID of the enchant to be added, it can be obtained from [this site](https://wowwiki-archive.fandom.com/wiki/EnchantId/Enchant_IDs) or by extracting the SpellItemEnchantments.dbc file. I've extracted the file and uploaded it to this [Google Spreadsheet](https://docs.google.com/spreadsheets/d/18Rwvshr7yiFzUwzVudMOrgBaoGdyQdK8L3u_xEVmqLE/edit?usp=sharing) in case you're interested.
+- **Enchant ID** is the ID of the enchant to be added, it can be obtained from [this site](https://wowwiki-archive.fandom.com/wiki/EnchantId/Enchant_IDs) or by extracting the SpellItemEnchantments.dbc file. I've extracted the file and uploaded it to this [spreadsheet](https://docs.google.com/spreadsheets/d/18Rwvshr7yiFzUwzVudMOrgBaoGdyQdK8L3u_xEVmqLE/edit?usp=sharing) in case you're interested.
 - **Tier** is an arbitrary number in the range 1-5 (inclusive), choose whatever suits the enchantment for you.
 - **Class** is a text that can be `ANY`, `WEAPON` or `ARMOR` depending if the enchantment is exclusive to a category or not.
 - **exclusiveSubClass** is a number that refers to an item subclass, it's used to be able to have random enchantments coherent with the weapon. e.g: `+3 Sword Skill` should be exclusive to swords. You can find the subclasses numbers [here](https://www.azerothcore.org/wiki/item_template#subclass).
+
+## Instalation
+The installation process is the same as any other Azerothcore module:
+
+1. Clone this repository in your azerothcore-woltk/modules folder and make sure the cloned folder doesn't have the `-master` suffix
+2. Compile the core
+3. You're done!
 
 ## TODO
 
