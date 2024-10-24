@@ -1,6 +1,7 @@
 #include "random_enchants.h"
 #include "utils/Utils.h"
 #include "Configuration/Config.h"
+#include <format>
 
 std::vector<uint32_t> ExcludedItems;
 std::vector<uint32_t> ExcludedQualities;
@@ -104,24 +105,25 @@ void rollPossibleEnchant(Player* player, Item* item)
     if (ItemLocale const* il = sObjectMgr->GetItemLocale(temp->ItemId))
         ObjectMgr::GetLocaleString(il->Name, loc_idx, name);
 
+
     if (slotRand[2] != -1)
-        chathandle.PSendSysMessage(
-            sConfigMgr->GetOption<std::string>(
-                    "RandomEnchants.RandomEnchantMessage3",
-                    "El objeto obtenido|cffFF0000 {} |rrecibio 3 encantamientos aleatorios!"),
-            name);
+    {
+        const std::string tempMessage = sConfigMgr->GetOption<std::string>("RandomEnchants.RandomEnchantMessage3", "El objeto obtenido|cffFF0000 %s |rrecibio 3 encantamientos aleatorios!");
+        const std::string displayMessage = Acore::StringFormat(tempMessage, name);
+        chathandle.PSendSysMessage(displayMessage);
+    }
     else if (slotRand[1] != -1)
-        chathandle.PSendSysMessage(
-            sConfigMgr->GetOption<std::string>(
-                    "RandomEnchants.RandomEnchantMessage2",
-                    "El objeto obtenido|cffFF0000 {} |rrecibio 2 encantamientos aleatorios!"),
-            name);
+    {
+        const std::string tempMessage = sConfigMgr->GetOption<std::string>("RandomEnchants.RandomEnchantMessage2", "El objeto obtenido|cffFF0000 %s |rrecibio 2 encantamientos aleatorios!");
+        const std::string displayMessage = Acore::StringFormat(tempMessage, name);
+        chathandle.PSendSysMessage(displayMessage);
+    }
     else if (slotRand[0] != -1)
-        chathandle.PSendSysMessage(
-            sConfigMgr->GetOption<std::string>(
-                    "RandomEnchants.RandomEnchantMessage1",
-                    "El objeto obtenido|cffFF0000 {} |rrecibio 1 encantamiento aleatorio!"),
-            name);
+    {
+        const std::string tempMessage = sConfigMgr->GetOption<std::string>("RandomEnchants.RandomEnchantMessage1", "El objeto obtenido|cffFF0000 %s |rrecibio 1 encantamiento aleatorio!");
+        const std::string displayMessage = Acore::StringFormat(tempMessage, name);
+        chathandle.PSendSysMessage(displayMessage);
+    }
 }
 
 uint32 getRandEnchantment(Item* item)
